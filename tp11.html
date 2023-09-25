@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Inputs Dinámicamente</title>
+</head>
+<body>
+    <h1>Crear Inputs Dinámicamente</h1>
+    
+    <label for="cantidadInputs">Selecciona la cantidad de inputs:</label>
+    <select id="cantidadInputs" onchange="crearInputs()">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+
+    <div id="inputsContainer">
+        <!-- Los inputs se agregarán aquí -->
+    </div>
+
+    <script>
+        function crearInputs() {
+            const select = document.getElementById("cantidadInputs");
+            const cantidad = parseInt(select.value);
+            const inputsContainer = document.getElementById("inputsContainer");
+
+            // Limpiar cualquier input previamente creado
+            inputsContainer.innerHTML = "";
+
+            // Crear los inputs dinámicamente
+            for (let i = 0; i < cantidad; i++) {
+                const input = document.createElement("input");
+                input.type = "text";
+                input.placeholder = `Input ${i + 1}`;
+                inputsContainer.appendChild(input);
+            }
+        }
+    </script>
+</body>
+</html>
